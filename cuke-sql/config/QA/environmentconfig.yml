@@ -1,0 +1,18 @@
+#Script Name        :  newcheckoutconfig
+#Description        :  This file have environment configurations    
+#Author             :  NISUM Technologies              
+#Reviewer           :  Ravi Gummala            
+#Creation Date      :  05/18/2012      
+#Pre-conditions     :  Base environment, access to the Software Request System.
+#Post-conditions:   :  Regression of the Software Request System based on functionality.
+#Data Files         :  None at this level.
+#******************************************************************************************************
+#Revision History
+#******************************************************************************************************
+#Date               :                
+#Revised By         :        
+#******************************************************************************************************
+#*********************************************************************************************
+
+#****************************#### Environment URL #### *********************************#
+url: http://www.mcomtest112.fds.com

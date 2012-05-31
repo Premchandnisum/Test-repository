@@ -1,0 +1,144 @@
+#Script Name        :  newcheckoutconfig
+#Description        :  This file have all the web elements/objects and page titles and URL's etc of new checkout project pages.   
+#Author             :  NISUM Technologies              
+#Reviewer           :  Ravi Gummala            
+#Creation Date      :        
+#Pre-conditions     :  Base environment, access to the Software Request System.
+#Post-conditions:   :  Regression of the Software Request System based on functionality.
+#Data Files         :  None at this level.
+#******************************************************************************************************
+# Revision History
+#******************************************************************************************************
+#Date               :                
+#Revised By         :        
+#******************************************************************************************************
+#*********************************************************************************************
+
+#********************************#### Shipping Page Web Elements ####*************************#
+shipping_first_name: sfName
+shipping_last_name: slName
+shipping_address_1: sAddress
+shipping_address_2: saddressLine2
+shipping_city: sCity
+shipping_state_select: sState
+shipping_state: //select[@id='sState']
+shipping_zipcode: spostalCode
+shipping_area_code: shippingAreaCode
+shipping_exchange_nbr: shippingExchNum
+shipping_subscriber_nbr: shippingSubNum
+shipping_international_shipping_link: //div[@id='anotherCountry']/div[2]/a
+shipping_continue_checkout_btn: //input[@id='submit']
+shipping_shippingMethod: //div[@id="deliveryMethod"]/fieldset[1]/ul[1]/li/span
+shipping_everydayShippingMethod: //div[@id="deliveryMethod"]/fieldset[1]/ul[1]/li/input[@id="shipments0.shippingMethod.methodCode1"]
+shipping_merchandise_total_in_shipping_page: //span[@id='subTotalAmount']
+shipping_flat_tax_in_shipping_page: //li[@id='estimatedTax']
+
+#********************************#### Gift Options Web Elements ####*************************#
+gift_option_no: //input[@id='gift-no']
+gift_option_yes: //input[@id='gift-yes']
+gift_message_checkbox: //input[@id='addGiftMessage']
+gift_message_textfield: //textarea[@id='giftMessage']
+gift_box: //input[@id='giftOption']
+gift_receipt: //input[@id='hidePrice']
+
+#********************************#### Billing Page Web Elements ####*************************#
+billing_credit_card_type: paymentCardType
+billing_card_number: paymentCardNumber
+billing_expiration_month: paymentCardExpMonth
+billing_expiration_year: paymentCardExpYear
+billing_security_code: paymentCardSecCode
+billing_sameasshippingaddress: useMyShippingAddress
+billing_first_name: paymentFirstName
+billing_last_name: paymentLastName
+billing_address_1: paymentAddressLine1
+billing_address_2: paymentAddressLine2
+billing_city: paymentCity
+billing_state: paymentState
+billing_zipcode: paymentPostalCode
+billing_contact_emailaddress: contactEmail
+billing_area_code: paymentAreaCode
+billing_exchange_nbr: paymentExchNum
+billing_subscriber_nbr: paymentSubNum
+billing_continue_checkout_btn: //input[@id='submit']
+billing_addcard_btn: //button[@id='addGiftCard']
+billing_errormessage: fieldLevel
+billing_create_profile_checkbox: createAccount
+billing_create_profile_emailaddress: email
+billing_create_profile_confirmemailaddress: confirmEmail
+billing_create_profile_password: password
+billing_create_profile_confirmpassword: cpassword
+billing_create_profile_birthday: birthday_date
+billing_create_profile_birthmonth: birthday_month
+billing_create_profile_birthyear: birthday_year
+billing_egc_cardnumber: addGiftCardEcardNumber 
+billing_egc_captcha: //input[@id='addGiftCardCaptchaWord']
+billing_egc_addcard: //button[@id='overlayAddGiftCard']
+billing_egc_newcaptcha: //button[@id='new_image']
+billing_egc_cancel: cancel
+billing_egc_overlay_cancel: //img[@id='cancelBtn']
+
+#********************************#### Order Review Page Web Elements ####*******************************#
+order_review_contact_email: //div[@class='section-padding']/ul/li[3]/div[2]
+order_review_phone: //div[@class='section-padding']/ul/li[3]/div[3]
+order_review_place_order_btn: //button[@id='placeOrder']
+order_review_edit_shipping_details_btn: //a[@id='changeShipping']
+order_review_edit_payment_details_btn: changePayment
+
+#********************************#### Order Confirmation Page Web Elements ####*************************#
+order_number: //div[@class='orderDetails']/span
+order_total: //div[@class='orderTotal addCardShade']/div/span
+order_confirmation_profile_email: //form[@id='confirmVB']/div/fieldset/div/div/span
+order_confirmation_profile_shipping_address: //form[@id='confirmVB']/div/fieldset/div/div[2]/div
+
+#********************************#### Checkout Page Web Elements, Titles and URLs ####****************#
+checkout_signin_page_title: Sign In - Macy's Checkout
+checkout_shipping_page_title : Shipping - Macy's Checkout
+checkout_payment_page_title : Payment - Macy's Checkout
+checkout_orderreview_page_title: Order Review - Macy's Checkout
+checkout_orderconfirmation_page_title: Order Confirmation - Macy's
+checkout_shipping_page_url: chkout/shipping
+checkout_payment_page_url: chkout/payment
+checkout_order_review_page_url: chkout/review
+checkout_order_confirm_page_url: chkout/confirm
+checkout_payment_errorpage_url: chkout/payment/continuecheckout
+checkout_without_profile_btn: //input[@id='isWithoutProfile']
+
+#********************************#### Header of Checkout Pages Web Elements ####************************#
+header_macys_logo: //div[@id='header']/hl[@id='macys-logo']/a
+header_chat: //a[@id='Live chat']
+header_clicktocall: //a[@id='Click to call']
+
+#********************************#### Footer of Checkout Pages Web Elements ####************************#
+footer_shopwithconfidence_eassyretuns: //a[@id='#{@footer_shopwithconfidence_secureshopping}']
+footer_shopwithconfidence_secureshopping: //a[@id='#{@footer_shopwithconfidence_secureshopping}']
+footer_shopwithconfidence_privacypolicy: //a[@id='#{@footer_shopwithconfidence_privacypolicy}']
+footer_shopwithconfidence_shippingpolicy: //a[@id='#{@footer_shopwithconfidence_shippingpolicy}']
+
+#********************************#### Mini Bag Web Elements, Titles and URLs ####********************#
+mini_bag_promo_code: promoCodeValue
+mini_bag_apply_promo_code: //input[@id='applyPromoCode']
+mini_bag_remove_promo_code: //input[@id='removePromoCode']
+mini_bag_shopping_bag_icon: //div[@id='icon-shopbag']
+mini_bag_bag_id_in_checkout_mini_bag: //span[@id='bagID']
+mini_bag_order_total_in_mini_bag_on_shipping_page: //span[@id='totalAmount']
+mini_bag_item_count: //span[@class='itemsCount']/span[@class='bold']
+shipping_surcharge_amount: //div[@id='bottom-panel']/ul/li[7]/span
+personalized_fee_amount: //div[@id='bottom-panel']/ul/li[8]/span
+sales_tax_amount: //div[@id='bottom-panel']/ul/li[10]
+
+#********************************#### International Home Page Web Elements ####***********************#
+international_home_page: internationalContext/index.ognc
+
+#********************************#### PDP Web Elements ####*******************************************#
+pdp_add_to_bag_btn: //img[@alt='add to bag']
+pdp_atb_continue_checkout_btn: //img[@id='btnCheckout']
+pdp_update_btn: //img[@id='updateButton']
+
+#********************************#### Shopping Bag Page Web Elements ####*****************************#
+shopping_bag_page_url: bag/index.ognc
+shopping_bag_page_continue_checkout_btn: //img[@id='continueCheckout']
+shopping_bag_page_empty_error_msg: //div[@class='generalError']/div[@class='errorMsg']
+shopping_bag_bag_id_in_shopping_bag: //div[@id='shoppingBagId']
+shopping_bag_order_total_in_shopping_bag: //div[@id='bagTotal']
+shopping_bag_order_total_currency_in_shopping_bag: //div[@id="bagTotalCurrency"]
+shopping_bag_item_count_in_shopping_bag: //a[@class='globalMiniCartItems']
