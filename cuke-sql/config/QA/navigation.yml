@@ -1,0 +1,17 @@
+url: http://www1.mcomtest104.fds.com
+url_qa_chk1: http://www1.preprod5macys.fds.com/ 
+url_sns1: http://lmia1519:9080/posTest.html
+url_sns2: http://boom.federated.fds:2012/posTest.html
+url_sns3: http://www1.pos.macys.com/posTest.html
+navigation:
+  forthehome: home
+  bed&bath: bath
+  women: women
+  men: men
+  juniors: juniors
+  kids: kids
+  beauty&fragrance: beauty
+  shoes: shoes
+  handbags&accessories: handbags
+  jewelry&watches: jewelry
+  sale: sale
