@@ -22,27 +22,11 @@ end
 
 Given /^I am on the Macy's home page$/ do
 #  Load Configuration File
-  if !(@fileLoaded)
-    puts "File Instance Not Exists"
-    loadConfig()
-  else    
-    puts "File Instance Exists"
-  end
+  callurlconfig()
   @env_current = get_env()
-  #  Load Configuration File
-
 #  Grab Variables From File
   @url = @navigation_file['url']
   visit("#{@url}")
   @browser = Capybara.current_session.driver.browser
   @browser.manage.delete_all_cookies
-end
-
-def loadConfig()
-  @fileLoaded=false
-  config_file = "config/#{ENV['ENVIRONMENT']}/navigation.yml"
-  config_data_file = "features/step_definitions/checkout/Config/checkoutobjects.yml"
-  @config_data_file=YAML::load(File.open(config_data_file))
-  @navigation_file = YAML::load(File.open(config_file))
-  @fileLoaded=true  
 end

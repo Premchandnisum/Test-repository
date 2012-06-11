@@ -1,15 +1,16 @@
 Feature:  New Checkout 2.1 Funtionality Regression Testing 
 
 # ******************** Shipping Page *********************#
+@high
 @regression
 @smoke
 @shipping
-@chkshipURL
+@chkshipurl
 Scenario: Verify the checkout shipping page URL
 Given I am on the Macy's home page
 Then I navigate to product detail page with common product id "<prodid>"
 |prodid|
-|1310|
+|654203|
 When I add items on bag
 Then I am on the your shopping bag page
 When I continue checkout on your shopping bag page
@@ -18,9 +19,10 @@ When I continue as a guest user
 Then I should see the Shipping page
 	And I should see the shipping page URL
 
+@medium
 @regression
 @shipping
-@chkshipgiftoption
+@chkshipgiftoptionno
 Scenario: Verify that gift option is set to NO by default
 Given I am on the Macy's home page
 Then I navigate to product detail page with common product id "<prodid>"
@@ -34,6 +36,7 @@ When I continue as a guest user
 Then I should see the Shipping page
 	And I should see the gift option set to NO by default
 
+@medium
 @regression
 @shipping
 @chkshipiship
@@ -52,6 +55,7 @@ Then I should see the Shipping page
 When I click on shipping internationally link
 Then I am on international home page
 
+@medium
 @regression
 @shipping
 @chkshipaddressvalidation
@@ -81,6 +85,7 @@ Examples: Invalid shipping address
 |prodid|firstname|lasttname|addressline1|addressline2|city|state|zipcode|phonenumberareacode|phonenumberexchangeNbr|phonenumbersubscriberNbr|errormessage|
 |1310|QA123|Macys|685 market street|Montgomery|San Fransisco|California|94538|123|456|3456|Shipping Address is invalid|
 
+@medium
 @regression
 @shipping
 @chkshipvalidations
@@ -88,7 +93,7 @@ Scenario: Shipping page validations messages with invalid information
 Given I am on the Macy's home page
 Then I navigate to product detail page with common product id "<prodid>"
 |prodid|
-|1310|
+|654203|
 When I add items on bag
 Then I am on the your shopping bag page
 When I continue checkout on your shopping bag page
@@ -101,10 +106,11 @@ Then I should see the Shipping page
 |Test|Macys677|685 Market Street|Montgomery|San Fransisco|California|94538|432|122|5432|Last Name is a required field and may only contain letters and hyphens. Your entry may not exceed 20 characters.|
 |Automation|MacysQA||Montgomery|San Fransisco|California|94538|223|124|0321|Street Address is a required field and may only contain letters, numbers and #. Your entry may not exceed 35 characters, including spaces.|
 |QAAuto|MacysTest|685 Market Street|Montgomery||California|94538|999|324|1456|City is a required field and may only contain letters, numbers and apostrophes.Your entry must not exceed 25 characters, including spaces.|
-|Macy Auto|MacysBBQA|685 Market Street|Montgomery|San Fransisco||94538|133|446|3356|You did not select a State from the menu. Please select a State to complete this form.|
-|QA Test|MacysTest|685 Market Street|Montgomery|San Fransisco|California|94538|923|856|5456|Your Zip Code must be 5 digits. Please try again.|
+|Macy Auto|MacysBBQA|685 Market Street|Montgomery|San Fransisco|Select|94538|133|446|3356|You did not select a State from the menu. Please select a State to complete this form.|
+|QA Test|MacysTest|685 Market Street|Montgomery|San Fransisco|California|94|923|856|5456|Your Zip Code must be 5 digits. Please try again.|
 |QATestAuto|MacysQABB|685 Market Street|Montgomery|San Fransisco|California|94538|399|456|3|Your Phone Number must be entered in this format: 800-555-1212 and may not all be the same number. Do not use (parentheses) for the area code. Please try again.|
 
+@medium
 @regression
 @shipping
 @chkshipstandardshipmethod
@@ -121,7 +127,7 @@ When I continue as a guest user
 Then I should see the Shipping page
 	And I should see standard shipping method is selected by default
 
-
+@high
 @regression
 @shipping
 @chkshipfreeship
@@ -138,6 +144,7 @@ When I continue as a guest user
 Then I should see the Shipping page
 	And I should see every day free shipping method is selected by default
 
+@medium
 @regression
 @shipping
 @chkshipgiftiptionsyes
@@ -155,6 +162,7 @@ Then I should see the Shipping page
 When I select gift option 'YES' in shipping page
 Then I should see all gift options 
 
+@medium
 @regression
 @shipping
 @chkshipgiftmsgchkbox1
@@ -173,7 +181,7 @@ When I select gift option 'YES' in shipping page
 Then I should see all gift options
 	And I should see gift message check box should be disabled
 
-
+@medium
 @regression
 @shipping
 @chkshipgiftmsgchkbox2
@@ -192,7 +200,7 @@ When I select gift option 'YES' in shipping page
 Then I should see all gift options
 	And I should see gift wrap check box should be disabled
 
-	
+@medium	
 @regression
 @shipping
 @chkshipstaterestriction
@@ -222,7 +230,7 @@ Examples: Shipping & Billing Information Test Data
 |prodid|firstname|lasttname|addressline1|addressline2|city|state|zipcode|phonenumberareacode|phonenumberexchangeNbr|phonenumbersubscriberNbr|errormessage|
 |1310|QA|Macys|685 |Montgomery|San Fransisco|California|94538|123|456|7890|There are shipping restrictions on items in your bag. These items can not be shipped to the shipping address provided. Please remove from your bag to continue.|
 
-
+@medium
 @regression
 @shipping
 @chkshiplimitedavailability
@@ -252,6 +260,7 @@ Examples: Shipping & Billing Information Test Data
 |prodid|firstname|lasttname|addressline1|addressline2|city|state|zipcode|phonenumberareacode|phonenumberexchangeNbr|phonenumbersubscriberNbr|errormessage|
 |1310|QA|Macys|685 |Montgomery|San Fransisco|California|94538|123|456|7890|Our item availability shows that you have requested <QTY requested>, but we only have <QTY available> available. We have adjusted your shopping bag accordingly.|
 
+@medium
 @regression
 @shipping
 @chkshipmethodrestriction
@@ -268,6 +277,7 @@ When I continue as a guest user
 Then I should see the Shipping page
 	And I should see disabled premium and express shipping methods
 	
+@high	
 @regression
 @smoke
 @shipping
@@ -284,7 +294,8 @@ Then I am on checkout signin page
 When I continue as a guest user
 Then I should see the Shipping page
 	And I see promo_code displayed
-	
+
+@medium
 @regression
 @smoke
 @shipping
@@ -304,6 +315,7 @@ When I enter shipping details
 When I go back one step
 Then I am on the your shopping bag page
 
+@high
 @regression
 @shipping
 @chkshipremoveitembacktobag
@@ -340,6 +352,7 @@ Examples: Shipping & Billing Information Test Data
 
 #*************************** Payment page **********************#
 
+@high
 @regression
 @smoke
 @payment
@@ -371,6 +384,7 @@ Examples: Shipping Information - Successfull Data
 |1310|QA|Macys|685 Market Street|Montgomery|San Fransisco|California|94538|123|456|7890|
 |1218|Hello|Macys|685 Market Street|Montgomery|San Fransisco|California|94538|123|456|7890|
 
+@high
 @regression
 @smoke
 @payment
@@ -403,6 +417,7 @@ Examples: Shipping Information - Successfull Data
 |prodid|firstname|lasttname|addressline1|addressline2|city|state|zipcode|phonenumberareacode|phonenumberexchangeNbr|phonenumbersubscriberNbr|
 |1310|QA|Macys|685 Market Street|Montgomery|San Fransisco|California|94538|123|456|7890|
 
+@medium
 @regression
 @smoke
 @payment
@@ -435,7 +450,7 @@ Examples: Shipping & Billing Information Test Data
 |prodid|firstname|lasttname|addressline1|addressline2|city|state|zipcode|phonenumberareacode|phonenumberexchangeNbr|phonenumbersubscriberNbr|Propcardtype|
 |1310|QA|Macys|685 Market Street|Montgomery|San Fransisco|California|94538|123|456|7890|Macy's|
 
-
+@high
 @regression
 @smoke
 @payment
@@ -468,6 +483,7 @@ Examples: Shipping & Billing Information Test Data
 |prodid|firstname|lasttname|addressline1|addressline2|city|state|zipcode|phonenumberareacode|phonenumberexchangeNbr|phonenumbersubscriberNbr|
 |1310|QA|Macys|685 Market Street|Montgomery|San Fransisco|California|94538|123|456|7890|
 
+@medium
 @regression
 @payment
 @chkpaymentcardvsnumbervalidation
@@ -509,7 +525,7 @@ Examples: Shipping & Billing Information Bad Test Data
 |prodid|firstname|lasttname|addressline1|addressline2|city|state|zipcode|phonenumberareacode|phonenumberexchangeNbr|phonenumbersubscriberNbr|cardtype|cardnumber|expmonth|expyear|securitycode|contactemailaddress|phonenumberareacode|phonenumberexchangeNbr|phonenumbersubscriberNbr|Card type VS card number validation error message|
 |1310|QA|Macys|685 Market Street|Montgomery|San Fransisco|California|94538|123|456|7890|Visa|4111111111|July|2013|111|qa@gmail.com|123|456|7890|Invalid Credit Card.|
 
-
+@medium
 @regression
 @payment
 @chkpaymentcardmasked
@@ -552,6 +568,7 @@ Examples:  Shipping & Billing Information Test Data
 |prodid|firstname|lasttname|addressline1|addressline2|city|state|zipcode|phonenumberareacode|phonenumberexchangeNbr|phonenumbersubscriberNbr|cardtype|cardnumber|expmonth|expyear|securitycode|contactemailaddress|phonenumberareacode|phonenumberexchangeNbr|phonenumbersubscriberNbr|
 |1310|QA|Macys|685 Market Street|Montgomery|San Fransisco|California|94538|123|456|7890|Visa|4111111111111111|July|2013|111|qa@gmail|123|456|7890|
 
+@high
 @regression
 @payment
 @chkpaymentpagefromshippingwhileedit
@@ -608,7 +625,7 @@ Examples:  Shipping & Billing Information Test Data
 |prodid|firstname|lasttname|addressline1|addressline2|city|state|zipcode|phonenumberareacode|phonenumberexchangeNbr|phonenumbersubscriberNbr|cardtype|cardnumber|expmonth|expyear|securitycode|contactemailaddress|phonenumberareacode|phonenumberexchangeNbr|phonenumbersubscriberNbr|editfirstname|editlasttname|editaddressline1|editaddressline2|editcity|editstate|editzipcode|editphonenumberareacode|editphonenumberexchangeNbr|editphonenumbersubscriberNbr|
 |1310|QA|Macys|685 Market Street|Montgomery|San Fransisco|California|94538|123|456|7890|Visa|4111111111111111|July|2013|111|qa@gmail.com|123|456|7890|Test|User|8605 Santa Monica Blvd|Montgomery|Los Angeles|California|90069|800|555|1212|
 
-                                                 
+@medium                                                 
 @regression
 @payment
 @chkpaymentegcmasked
@@ -647,6 +664,7 @@ Examples:
 |prodid|firstname|lasttname|addressline1|addressline2|city|state|zipcode|phonenumberareacode|phonenumberexchangeNbr|phonenumbersubscriberNbr|egcnumber|captcha|
 |1310|QA|Macys|685 Market Street|Montgomery|San Fransisco|California|94538|123|456|7890|12345678|abC1d|
 
+@medium
 @regression
 @payment
 @chkpaymentegcfieldclear
@@ -684,10 +702,11 @@ Examples: Shipping & Billing Information Test Data
 |prodid|firstname|lasttname|addressline1|addressline2|city|state|zipcode|phonenumberareacode|phonenumberexchangeNbr|phonenumbersubscriberNbr|egccardnumber|captcha|
 |1310|QA|Macys|685 Market Street|Montgomery|San Fransisco|California|94538|123|456|7890|1234567890|abcd|
 
-
+@medium
 @regression
 @payment
 @chkpaymentnewegccaptch
+@WIP
 Scenario Outline: Verify that new captcha should be display when clicks on new image on EGC overlay.
 Given I am on the Macy's home page
 Then I navigate to product detail page with product id "<prodid>"
@@ -718,6 +737,7 @@ Examples: Shipping & Billing Information Test Data
 |prodid|firstname|lasttname|addressline1|addressline2|city|state|zipcode|phonenumberareacode|phonenumberexchangeNbr|phonenumbersubscriberNbr|giftcardnumber|securityverificationcode|
 |1310|QA|Macys|685 Market Street|Montgomery|San Fransisco|California|94538|123|456|7890|1234567890|abcd|
 
+@high
 @regression
 @payment
 @chkpaymentcreateprofile
@@ -768,7 +788,7 @@ Examples: Shipping & Billing Information Test Data
 |prodid|firstname|lasttname|addressline1|addressline2|city|state|zipcode|phonenumberareacode|phonenumberexchangeNbr|phonenumbersubscriberNbr|cardtype|cardnumber|expmonth|expyear|securitycode|contactemailaddress|phonenumberareacode|phonenumberexchangeNbr|phonenumbersubscriberNbr|createprofileemailladdress|createprofilconfirmemail|createprofilepwd|createprofileconfirmpwd|birthmonth|birthdate|birthyear|errormessage|
 |1310|QA|Macys|685 Market Street|Montgomery|San Fransisco|California|94538|123|456|7890|Visa|4111111111111111|June|2013|111|qa@gmail.com|123|456|7890|nisum1@yahoo.com|nisum1@yahoo.com|12345|12345|December|30|1999|You must be at least 13 years old to register with macys.com.|
 
-
+@medium
 @regression
 @payment
 @chkpaymentsecuritycodeclear
@@ -811,9 +831,11 @@ Examples: Shipping & Billing Information Test Data
 |prodid|firstname|lasttname|addressline1|addressline2|city|state|zipcode|phonenumberareacode|phonenumberexchangeNbr|phonenumbersubscriberNbr|cardtype|cardnumber|expmonth|expyear|securitycode|contactemailaddress|phonenumberareacode|phonenumberexchangeNbr|phonenumbersubscriberNbr|
 |1310|QA|Macys|685 Market Street|Montgomery|San Fransisco|California|94538|123|456|7890|Visa|41111111111|June|2013|0000|qa@gmail.com|123|456|7890|
 
+@medium
 @regression
 @payment
 @chkpaymentbtnsegcoverlay
+@WIP
 Scenario Outline: Verify  the buttons/fields on EGC overlay.
 Given I am on the Macy's home page
 Then I navigate to product detail page with product id "<prodid>"
@@ -837,18 +859,18 @@ When I continue checkout on shipping page
 Then I should see the Payment page
 When I click on add card button on payment page
 Then I should see EGC overlay
-    And I should see card number text field in EGC overlay
-    And I should see captcha image in EGC overlay
-    And I should see new image button in EGC overlay
-    And I should see text field to enter captcha in EGC overlay
-    And I should see submit button in EGC overlay
-    And I should see cancel button in EGC overlay
+    #And I should see card number text field in EGC overlay
+    #And I should see captcha image in EGC overlay
+    #And I should see new image button in EGC overlay
+    #And I should see text field to enter captcha in EGC overlay
+    #And I should see submit button in EGC overlay
+    #And I should see cancel button in EGC overlay
 
 Examples: Shipping & Billing Information Test Data
 |prodid|firstname|lasttname|addressline1|addressline2|city|state|zipcode|phonenumberareacode|phonenumberexchangeNbr|phonenumbersubscriberNbr|
 |1310|QA|Macys|685 Market Street|Montgomery|San Fransisco|California|94538|123|456|7890|
 
-
+@high
 @regression
 @payment
 @chkpaymentpage2
@@ -867,6 +889,7 @@ When I enter shipping details
 When I continue checkout on shipping page
 Then I should see the Payment page
 
+@medium
 @regression
 @smoke
 @payment
@@ -889,6 +912,7 @@ When I enter credit card details
 	And I enter billing address
 Then I validate billing address same as shipping address
 
+@medium
 @regression
 @smoke
 @payment
@@ -911,6 +935,7 @@ When I go back one step
 Then I should see the Shipping page
 
 #**************************Order review ****************************#
+@high
 @regression
 @smoke
 @orderreview
@@ -953,7 +978,7 @@ Examples: Shipping & Billing Information Test Data
 |prodid|firstname|lasttname|addressline1|addressline2|city|state|zipcode|phonenumberareacode|phonenumberexchangeNbr|phonenumbersubscriberNbr|cardtype|cardnumber|expmonth|expyear|securitycode|contactemailaddress|phonenumberareacode|phonenumberexchangeNbr|phonenumbersubscriberNbr|
 |1310|QA|Macys|685 Market Street|Montgomery|San Fransisco|California|94538|123|456|7890|Visa|4111111111111111|June|2013|111|qa@gmail.com|123|456|7890|
 
-
+@high
 @regression
 @smoke
 @orderreview
@@ -998,7 +1023,7 @@ Examples:  Shipping & Billing Information Test Data
 |prodid|firstname|lasttname|addressline1|addressline2|city|state|zipcode|phonenumberareacode|phonenumberexchangeNbr|phonenumbersubscriberNbr|cardtype|cardnumber|expmonth|expyear|securitycode|contactemailaddress|phonenumberareacode|phonenumberexchangeNbr|phonenumbersubscriberNbr|
 |1310|QA|Macys|685 Market Street|Montgomery|San Fransisco|California|94538|123|456|7890|Visa|4111111111111111|July|2013|111|qa@gmail.com|123|456|7890|
 
-
+@medium
 @regression
 @orderreview
 @chkreviewcontactdetails
@@ -1042,6 +1067,7 @@ Examples: Shipping & Billing Information Test Data
 |prodid|firstname|lasttname|addressline1|addressline2|city|state|zipcode|phonenumberareacode|phonenumberexchangeNbr|phonenumbersubscriberNbr|cardtype|cardnumber|expmonth|expyear|securitycode|contactemailaddress|phonenumberareacode|phonenumberexchangeNbr|phonenumbersubscriberNbr|
 |1310|QA|Macys|685 Market Street|Montgomery|San Fransisco|California|94538|123|456|7890|Visa|4111111111111111|June|2013|111|qa@gmail.com|123|456|7890|
 
+@high
 @regression
 @smoke
 @orderreview
@@ -1064,7 +1090,8 @@ When I enter credit card details
 	And I enter billing address
 When I continue checkout on payment page
 Then I should see the order review page
-		  
+
+@medium		  
 @regression
 @orderreview
 @chkreviewplaceorder2
@@ -1088,7 +1115,8 @@ When I enter credit card details
     And I enter billing address
 When I continue checkout on payment page
 Then I should see the order review page
-		  
+
+@high  
 @regression
 @smoke
 @orderreview
@@ -1115,7 +1143,7 @@ When I continue checkout on payment page
 Then I should see the order review page
 	And I see the page is secure
 
-
+@medium
 @regression
 @orderreview
 @chkreviewfields
@@ -1138,7 +1166,8 @@ When I enter credit card details
 When I continue checkout on payment page
 Then I should see the order review page
 	And I validate the fields_and_buttons on ordereview page
-	
+
+@high	
 @regression
 @orderreview
 @chkreviewclickshippinginfo
@@ -1153,6 +1182,7 @@ When I continue checkout on payment page
 Then I should see the order review page
 	And shipping address should be updated in order review page
 
+@high
 @regression
 @orderreview
 @chkreviewclickpaymentinfo
@@ -1167,6 +1197,7 @@ When I continue checkout on payment page
 Then I should see the order review page
 	And I see updated payment information
 
+@medium
 @regression
 @orderreview
 @chkreviewshippingandbillinginfo
@@ -1176,6 +1207,7 @@ Then the shipping address should be correct on order review page
 	And the billing address should be correct on order review page
 	
 #*********************Order Confirmation*****************#
+@high
 @regression
 @smoke
 @orderconfirm
@@ -1223,7 +1255,9 @@ Examples:  Shipping & Billing Information Test Data
 |prodid|firstname|lasttname|addressline1|addressline2|city|state|zipcode|phonenumberareacode|phonenumberexchangeNbr|phonenumbersubscriberNbr|cardtype|cardnumber|expmonth|expyear|securitycode|contactemailaddress|phonenumberareacode|phonenumberexchangeNbr|phonenumbersubscriberNbr|
 |1310|QA|Macys|685 Market Street|Montgomery|San Fransisco|California|94538|123|456|7890|Visa|4111111111111111|July|2013|111|qa@gmail.com|123|456|7890|
 
+@high
 @regression
+@smoke
 @orderconfirm
 @chkorderconfirmnewprofile
 Scenario Outline: Veriify New profile confirmation display in order confirmation page
@@ -1276,6 +1310,7 @@ Examples:  Shipping, Billing Information & Create Profile Test Data
 |prodid|firstname|lasttname|addressline1|addressline2|city|state|zipcode|phonenumberareacode|phonenumberexchangeNbr|phonenumbersubscriberNbr|cardtype|cardnumber|expmonth|expyear|securitycode|contactemailaddress|phonenumberareacode|phonenumberexchangeNbr|phonenumbersubscriberNbr|createprofileemailaddress|createprofileconfirmemail|createprofilepwd|createprofileconfirmpwd|birthmonth|birthdate|birthyear|
 |1310|QA|Macys|685 Market Street|Montgomery|San Fransisco|California|94538|123|456|7890|Visa|4111111111111111|July|2013|111|qa@gmail.com|123|456|7890|test010@nisum.com|test010@nisum.com|12345|12345|May|12|1988|
 
+@average
 @regression
 @orderconfirm
 @chkorderconfirmcreateprofilealreadyexists
@@ -1329,6 +1364,7 @@ Examples: Shipping & Billing Information Test Data
 |prodid|firstname|lasttname|addressline1|addressline2|city|state|zipcode|phonenumberareacode|phonenumberexchangeNbr|phonenumbersubscriberNbr|cardtype|cardnumber|expmonth|expyear|securitycode|contactemailaddress|phonenumberareacode|phonenumberexchangeNbr|phonenumbersubscriberNbr|createprofileemailaddress|createprofileconfirmemail|createprofilepwd|createprofileconfirmpwd|birthmonth|birthdate|birthyear|errormessage|
 |1310|QA|Macys|685 Market Street|Montgomery|San Fransisco|California|94538|123|456|7890|Visa|4111111111111111|June|2013|111|qa@gmail.com|123|456|7890|nisum1@yahoo.com|nisum1@yahoo.com|12345|12345|December|30|1987|Please note: due to an issue, we were unable to create your new profile. We still want to know more about you, so we ask that you create your online account in our profile page|
 
+@high
 @regression
 @smoke
 @orderconfirm
@@ -1374,6 +1410,7 @@ Examples:  Shipping, Billing Information & Create Profile Test Data
 |prodid|firstname|lasttname|addressline1|addressline2|city|state|zipcode|phonenumberareacode|phonenumberexchangeNbr|phonenumbersubscriberNbr|cardtype|cardnumber|expmonth|expyear|securitycode|contactemailaddress|phonenumberareacode|phonenumberexchangeNbr|phonenumbersubscriberNbr|
 |1310|QA|Macys|685 Market Street|Montgomery|San Fransisco|California|94538|123|456|7890|Visa|4111111111111111|July|2013|111|qa@gmail.com|123|456|7890|
 
+@medium
 @regression
 @orderconfirm
 @chkorderconfirmordertotal
@@ -1418,7 +1455,7 @@ Examples:  Shipping, Billing Information & Create Profile Test Data
 |prodid|firstname|lasttname|addressline1|addressline2|city|state|zipcode|phonenumberareacode|phonenumberexchangeNbr|phonenumbersubscriberNbr|cardtype|cardnumber|expmonth|expyear|securitycode|contactemailaddress|phonenumberareacode|phonenumberexchangeNbr|phonenumbersubscriberNbr|
 |1310|QA|Macys|685 Market Street|Montgomery|San Fransisco|California|94538|123|456|7890|Visa|4111111111111111|July|2013|111|qa@gmail.com|123|456|7890|
 
-
+@medium
 @regression
 @orderconfirm
 @chkorderconfirmerrormsgs
@@ -1465,6 +1502,7 @@ Examples:  Shipping, Billing Information & Create Profile Test Data
 |1310|QA|Macys|685 Market Street|Montgomery|San Fransisco|California|94538|123|456|7890|Visa|4111111111111111|July|2013|111|qa@gmail.com|123|456|7890|Were sorry. Our inventory system is temporarily unavailable. We will send you an e-mail confirming availability and shipment time as soon as our system is back online. You may cancel your order at that time if the shipment time is unacceptable, and your account will not be charged. Please proceed with your order, or try again later. Please note, for Premium 2 Day and Express Overnight Shipping, your expected ship date on the confirmation page will not reflect the shorter processing time. If your merchandise is in stock, we will expedite your order once our inventory systems become available again.|
 
 # *********** mini bag and other common functions ***************#
+@medium
 @regression
 @minibag
 @chkminibagicon
@@ -1523,6 +1561,7 @@ Examples:  Shipping & Billing Information Test Data
 |prodid|firstname|lasttname|addressline1|addressline2|city|state|zipcode|phonenumberareacode|phonenumberexchangeNbr|phonenumbersubscriberNbr|cardtype|cardnumber|expmonth|expyear|securitycode|contactemailaddress|phonenumberareacode|phonenumberexchangeNbr|phonenumbersubscriberNbr|
 |1310|QA|Macys|685 Market Street|Montgomery|San Fransisco|California|94538|123|456|7890|Visa|4111111111111111|July|2013|111|qa@gmail.com|123|456|7890|
 
+@medium
 @regression
 @smoke
 @minibag
@@ -1570,7 +1609,7 @@ Examples:  Shipping & Billing Information Test Data
 |prodid|firstname|lasttname|addressline1|addressline2|city|state|zipcode|phonenumberareacode|phonenumberexchangeNbr|phonenumbersubscriberNbr|cardtype|cardnumber|expmonth|expyear|securitycode|contactemailaddress|phonenumberareacode|phonenumberexchangeNbr|phonenumbersubscriberNbr|
 |1310|QA|Macys|685 Market Street|Montgomery|San Fransisco|California|94538|123|456|7890|Visa|4111111111111111|July|2013|111|qa@gmail.com|123|456|7890|
 
-
+@medium
 @regression
 @smoke
 @minibag
@@ -1605,7 +1644,9 @@ When I continue as a guest user
 Then I should see the Shipping page
 	And I should see flat tax displayed in order summary
 
+@high
 @regression
+@smoke
 @minibag
 @chkminitemcount
 Scenario Outline: Verify that item count in shopping bag page and in the mini bag section of checkout pages should be same.
@@ -1648,15 +1689,12 @@ When I continue checkout on payment page
 Then I should see the order review page
 	And bag count should be displayed in mini bag
 	And bag count in mini bag should be same as in the shopping bag
-When I place order on review page
-Then I should see the order confirmation page
-	And the page should be secure
-
 
 Examples:  Shipping & Billing Information Test Data
 |prodid|firstname|lasttname|addressline1|addressline2|city|state|zipcode|phonenumberareacode|phonenumberexchangeNbr|phonenumbersubscriberNbr|cardtype|cardnumber|expmonth|expyear|securitycode|contactemailaddress|phonenumberareacode|phonenumberexchangeNbr|phonenumbersubscriberNbr|
 |1310|QA|Macys|685 Market Street|Montgomery|San Fransisco|California|94538|123|456|7890|Visa|4111111111111111|July|2013|111|qa@gmail.com|123|456|7890|
 
+@medium
 @regression
 @minibag
 @chkminifreeforgwp
@@ -1701,6 +1739,7 @@ Examples: Shipping Information - Successfull Data
 |prodid|firstname|lasttname|addressline1|addressline2|city|state|zipcode|phonenumberareacode|phonenumberexchangeNbr|phonenumbersubscriberNbr|cardtype|cardnumber|expmonth|expyear|securitycode|contactemailaddress|phonenumberareacode|phonenumberexchangeNbr|phonenumbersubscriberNbr|
 |1310|QA|Macys|685 Market Street|Montgomery|San Fransisco|California|94538|123|456|7890|Visa|4111111111111111|July|2013|111|qa@gmail.com|123|456|7890|
 
+@medium
 @regression
 @minibag
 @chkminipwp
@@ -1745,6 +1784,7 @@ Examples: Shipping Information - Successfull Data
 |prodid|firstname|lasttname|addressline1|addressline2|city|state|zipcode|phonenumberareacode|phonenumberexchangeNbr|phonenumbersubscriberNbr|cardtype|cardnumber|expmonth|expyear|securitycode|contactemailaddress|phonenumberareacode|phonenumberexchangeNbr|phonenumbersubscriberNbr|
 |1310|QA|Macys|685 Market Street|Montgomery|San Fransisco|California|94538|123|456|7890|Visa|4111111111111111|July|2013|111|qa@gmail.com|123|456|7890|
 
+@high
 @regression
 @smoke
 @minibag
@@ -1791,6 +1831,7 @@ Examples:  Shipping & Billing Information Test Data
 |prodid|firstname|lasttname|addressline1|addressline2|city|state|zipcode|phonenumberareacode|phonenumberexchangeNbr|phonenumbersubscriberNbr|cardtype|cardnumber|expmonth|expyear|securitycode|contactemailaddress|phonenumberareacode|phonenumberexchangeNbr|phonenumbersubscriberNbr|expectedErrorMessage|
 |1310|QA|Macys|685 Market Street|Montgomery|San Fransisco|California|94538|123|456|7890|Visa|4111111111111111|July|2013|111|qa@gmail.com|123|456|7890|Your Current Shopping Bag is empty.|
 
+@medium
 @regression
 @minibag
 @chkminipromoapply
@@ -1840,7 +1881,7 @@ Examples:  Shipping & Billing Information Test Data
 |prodid|promocode|firstname|lasttname|addressline1|addressline2|city|state|zipcode|phonenumberareacode|phonenumberexchangeNbr|phonenumbersubscriberNbr|cardtype|cardnumber|expmonth|expyear|securitycode|contactemailaddress|phonenumberareacode|phonenumberexchangeNbr|phonenumbersubscriberNbr|
 |1310|X88LAL232XUX|QA|Macys|685 Market Street|Montgomery|San Fransisco|California|94538|123|456|7890|Visa|4111111111111111|July|2013|111|qa@gmail.com|123|456|7890|
 
-
+@medium
 @regression
 @minibag
 @chkminipromoremove
@@ -1893,6 +1934,7 @@ Examples:  Shipping & Billing Information Test Data
 |prodid|promocode|firstname|lasttname|addressline1|addressline2|city|state|zipcode|phonenumberareacode|phonenumberexchangeNbr|phonenumbersubscriberNbr|cardtype|cardnumber|expmonth|expyear|securitycode|contactemailaddress|phonenumberareacode|phonenumberexchangeNbr|phonenumbersubscriberNbr|
 |1310|X88LAL232XUX|QA|Macys|685 Market Street|Montgomery|San Fransisco|California|94538|123|456|7890|Visa|4111111111111111|July|2013|111|qa@gmail.com|123|456|7890|
 
+@medium
 @regression
 @minibag
 @chkmininewbagid
@@ -1946,6 +1988,7 @@ Examples:  Shipping & Billing Information Test Data
 |prodid|firstname|lasttname|addressline1|addressline2|city|state|zipcode|phonenumberareacode|phonenumberexchangeNbr|phonenumbersubscriberNbr|cardtype|cardnumber|expmonth|expyear|securitycode|contactemailaddress|phonenumberareacode|phonenumberexchangeNbr|phonenumbersubscriberNbr|
 |1310|QA|Macys|685 Market Street|Montgomery|San Fransisco|California|94538|123|456|7890|Visa|4111111111111111|July|2013|111|qa@gmail.com|123|456|7890|
 
+@high
 @regression
 @smoke
 @minibag
@@ -1973,7 +2016,8 @@ Then I should see the Shipping page
 When I click on Product Image for a product in mini bag
 Then I navigate to product details page
 	 And I should see the attributes selected by the user are populated on PDP page
-	
+
+@average
 @regression
 @minibag
 @chkminisurcharge
@@ -2018,6 +2062,7 @@ Examples: Shipping & Billing Information Test Data
 |prodid|firstname|lasttname|addressline1|addressline2|city|state|zipcode|phonenumberareacode|phonenumberexchangeNbr|phonenumbersubscriberNbr|cardtype|cardnumber|expmonth|expyear|securitycode|contactemailaddress|phonenumberareacode|phonenumberexchangeNbr|phonenumbersubscriberNbr|
 |1310|QA|Macys|685 Market Street|Montgomery|San Fransisco|California|94538|123|456|7890|Visa|4111111111111111|June|2013|123|qa@gmail.com|123|456|7890|
 
+@average
 @regression
 @minibag
 @chkminipersonalizedfee
@@ -2062,6 +2107,7 @@ Examples: Shipping & Billing Information Test Data
 |prodid|firstname|lasttname|addressline1|addressline2|city|state|zipcode|phonenumberareacode|phonenumberexchangeNbr|phonenumbersubscriberNbr|cardtype|cardnumber|expmonth|expyear|securitycode|contactemailaddress|phonenumberareacode|phonenumberexchangeNbr|phonenumbersubscriberNbr|
 |1310|QA|Macys|685 Market Street|Montgomery|San Fransisco|California|94538|123|456|7890|Visa|4111111111111111|June|2013|123|qa@gmail.com|123|456|7890|
 
+@medium
 @regression
 @minibag
 @chkminisalestax
@@ -2106,7 +2152,7 @@ Examples: Shipping & Billing Information Test Data
 |prodid|firstname|lasttname|addressline1|addressline2|city|state|zipcode|phonenumberareacode|phonenumberexchangeNbr|phonenumbersubscriberNbr|cardtype|cardnumber|expmonth|expyear|securitycode|contactemailaddress|phonenumberareacode|phonenumberexchangeNbr|phonenumbersubscriberNbr|
 |1310|QA|Macys|685 Market Street|Montgomery|San Fransisco|California|94538|123|456|7890|Visa|4111111111111111|June|2013|123|qa@gmail.com|123|456|7890|
 
-
+@high
 @regression
 @smoke
 @minibag
@@ -2132,7 +2178,7 @@ When I continue checkout on payment page
 Then I should see the order review page
 	And I see minibag displayed
 
-
+@high
 @regression
 @smoke
 @minibag
@@ -2159,6 +2205,7 @@ When I continue checkout on payment page
 Then I should see the order review page
 	And I see bag_id displayed
 
+@medium
 @regression
 @chkpagetitles
 Scenario: Verify checkout pages titles
@@ -2180,6 +2227,7 @@ When I enter credit card details
 When I continue checkout on payment page
 Then I should see the order review page
 
+@medium
 @regression
 @chkfreeshiprules
 Scenario Outline: Verify free shipping rules on checkout pages.
@@ -2239,6 +2287,7 @@ Examples: Shipping & Billing Information Test Data
 |prodid|firstname|lasttname|addressline1|addressline2|city|state|zipcode|phonenumberareacode|phonenumberexchangeNbr|phonenumbersubscriberNbr|cardtype|cardnumber|expmonth|expyear|securitycode|contactemailaddress|phonenumberareacode|phonenumberexchangeNbr|phonenumbersubscriberNbr|
 |1310|QA|Macys|685 Market Street|Montgomery|San Francisco|California|94538|123|456|7890|Visa|4111111111111111|June|2013|123|qa@gmail.com|123|456|7890|
 
+@medium
 @regression
 @chkbreadcrumbs
 Scenario: Verify Page bread crumbs / Progress indicator
@@ -2273,6 +2322,7 @@ Then I should see the order review page
 	
 
 #**************** Redirections **************************************#
+@medium
 @regression
 @smoke
 @redirections
@@ -2289,6 +2339,7 @@ Then I am on checkout signin page
 When I continue as a guest user
 Then I am on legacy shipping address page
 
+@medium
 @regression
 @smoke
 @redirections
@@ -2304,9 +2355,8 @@ Then I am on checkout signin page
 When I continue as a guest user
 Then I am on legacy shipping address page
 
-
-
 #********************** Header and Footer links ********************************#
+@medium
 @regression
 @headerfooterlinks1
 @WIP
@@ -2342,6 +2392,7 @@ Then I should see Shipping Policy pop up
 When I close the pop up
 Then pop up should be closed
 
+@medium
 @regression
 @headerfooterlinks2
 @WIP

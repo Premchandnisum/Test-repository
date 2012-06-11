@@ -12,13 +12,11 @@
 #Date               :
 #Revised By         :
 #******************************************************************************************************
-
 Then /^I should see the order confirmation page$/ do
   @checkout_orderconfirmation_page_title = @config_data_file['checkout_orderconfirmation_page_title']
   page_navigated = page.has_content? @checkout_orderconfirmation_page_title
   if (page_navigated)
     puts "Expected Page is displayed i.e. : " + @checkout_orderconfirmation_page_title
-    puts "\n"
   else
     notExpectedTitle=@browser.title
     puts "Expected Page is not displayed : " + notExpectedTitle
@@ -34,8 +32,7 @@ Then /^I should see profile email address$/ do
   @order_confirmation_profile_email = @config_data_file['order_confirmation_profile_email']
   puts "Profile email address entered on payment page: " + @billing_create_profile_emailaddress
   wait_until_entity_exists("path","#{@order_confirmation_profile_email}" , 30, "")
-  @orderconfrimationprofileemail = page.find(:xpath, "#{@order_confirmation_profile_email}").text
-  puts "\n"
+  @orderconfrimationprofileemail = page.find(:xpath, "#{@order_confirmation_profile_email}").text  
   puts "Profile email address on order confirmation page: " + @orderconfrimationprofileemail
   if (@billing_create_profile_emailaddress == @orderconfrimationprofileemail)
     puts "Profile email address is displaying as expected on order confirmation page"
@@ -78,7 +75,7 @@ And /^I should see the order number$/ do
   else
     puts "Order number is NOT displayed in order confirmation page"
   end
-  puts "Order Number is : #{order_number}"
+  puts "Order Number is :" + "#{order_number}"
 end
 
 And /^I should see the order total$/ do
@@ -90,5 +87,5 @@ And /^I should see the order total$/ do
   else
     puts "Order total is NOT displayed in order confirmation page"
   end
-  puts "Order Total is : #{order_total}"
+  puts "Order Total is :"+ "#{order_total}"
 end

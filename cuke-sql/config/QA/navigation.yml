@@ -1,4 +1,5 @@
-url: http://www1.mcomtest104.fds.com
+url: http://www1.macys.com
+#url: http://www1.macys.com
 url_qa_chk1: http://www1.preprod5macys.fds.com/ 
 url_sns1: http://lmia1519:9080/posTest.html
 url_sns2: http://boom.federated.fds:2012/posTest.html

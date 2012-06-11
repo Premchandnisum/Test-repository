@@ -12,13 +12,11 @@
 #Date               :
 #Revised By         :        
 #******************************************************************************************************
-
 Then /^I should see the Payment page$/ do
   @expectedPaymentPageTitle = @config_data_file['checkout_payment_page_title']
   page_navigated = page.has_content? @expectedPaymentPageTitle
   if (page_navigated)
     puts "Expected Page is displayed i.e. : " + @expectedPaymentPageTitle
-    puts "\n"
   else
     notExpectedTitle=@browser.title
     puts "Expected Page is not displayed : " + notExpectedTitle
@@ -114,19 +112,18 @@ end
 And /^credit card number should be masked except for last (\d+) digits$/ do |arg1|
    pageMaskedCard = page.has_content? "************1111"
    puts pageMaskedCard
-   puts "masked ******************************"
 end
 
 Then /^expiration date fields and security code field should be disabled$/ do
    if (page.find(:xpath, "#{@billing_expiration_month}").visible?)
-   puts "fail"
+   puts "Expiration month is visible"
    else
-   puts "pass"
+   puts "Expiration month is not visible"
   end
   if (page.find(:xpath, "#{@billing_expiration_year}").visible?)
-    puts "fail"
+    puts "Expiration year is visible"
   else 
-    puts "pass"
+    puts "Expiration year is not visible"
    end
 end
 
@@ -251,8 +248,8 @@ Then /^I should be again redirected to Payment page$/ do
 end
 
 And /^I should see empty security code field$/ do
-  @billing_empty_security_code = @config_data_file['billing_security_code']
-  @billing_empty_security_code_value = page.find(:xpath, "#{@billing_empty_security_code}").value  
+  @billing_security_code_val = @config_data_file['billing_security_code_val']
+  @billing_empty_security_code_value = page.find(:xpath, "#{@billing_security_code_val}").value  
   if(@billing_empty_security_code_value == "")
      puts "Security field is cleared"
    else
@@ -319,18 +316,25 @@ When /^I enter new payment information$/ do
 end
 
 Then /^I validate billing address same as shipping address$/ do
-  @billing_first_name = @config_data_file['billing_first_name']
-  @billing_last_name = @config_data_file['billing_last_name']
-  @billing_address_1 = @config_data_file['billing_address_1']
-  @billing_city = @config_data_file['billing_city']
-  @billing_state = @config_data_file['billing_state']
-  @billing_zipcode = @config_data_file['billing_zipcode']
-    page.find(:xpath, "#{@billing_first_name}").value.should == @new_shipping_firstname
-    page.find(:xpath, "#{@billing_last_name}").value.should == @new_shipping_lastname
-    page.find(:xpath, "#{@billing_address_1}").value.should == @new_shipping_address1
-    page.find(:xpath, "#{@billing_city}").value.should == @new_shipping_city
-    page.find(:xpath, "#{@billing_state}").value.should == @new_shipping_state
-    page.find(:xpath, "#{@billing_zipcode}").value.to_i.should == @new_shipping_zip_code
+  @billing_first_name_val = @config_data_file['billing_first_name_val']
+  @billing_last_name_val = @config_data_file['billing_last_name_val']
+  @billing_address_1_val = @config_data_file['billing_address_1_val']
+  @billing_city_val = @config_data_file['billing_city_val']
+  @billing_state_val = @config_data_file['billing_state_val']
+  @billing_zipcode_val = @config_data_file['billing_zipcode_val']
+  @new_shipping_firstname = @config_data_file['new_shipping_firstname']
+  @new_shipping_lastname = @config_data_file['new_shipping_lastname']
+  @new_shipping_address1 = @config_data_file['new_shipping_address1']
+  @new_shipping_city = @config_data_file['new_shipping_city']
+  @new_shipping_state = @config_data_file['new_shipping_state']
+  @new_shipping_zip_code = @config_data_file['new_shipping_zip_code']
+ 
+  page.find(:xpath, "#{@billing_first_name_val}").value.should == @new_shipping_firstname
+  page.find(:xpath, "#{@billing_last_name_val}").value.should == @new_shipping_lastname
+  page.find(:xpath, "#{@billing_address_1_val}").value.should == @new_shipping_address1
+  page.find(:xpath, "#{@billing_city_val}").value.should == @new_shipping_city
+  page.find(:xpath, "#{@billing_state_val}").value.should == @new_shipping_state
+  page.find(:xpath, "#{@billing_zipcode_val}").value.to_i.should == @new_shipping_zip_code
 end
 
 When /^I enter credit card details$/ do         
@@ -343,11 +347,13 @@ When /^I enter credit card details$/ do
   @billing_new_card_securitycode = @config_data_file['billing_new_card_securitycode']
   @billing_new_card_month = @config_data_file['billing_new_card_month']
   @billing_new_card_year = @config_data_file['billing_new_card_year']
-    select(@billing_new_card_type, :from => @billing_credit_card_type)
-    fill_in @billing_card_number, :with => @billing_new_card_number
-    fill_in @billing_security_code, :with => @billing_new_card_securitycode
-    select(@billing_new_card_month, :from => @billing_expiration_month)
-    select(@billing_new_card_year.to_s, :from => @billing_expiration_year)
+  @billing_security_code = @config_data_file['billing_security_code']
+  
+  select(@billing_new_card_type, :from => @billing_credit_card_type)
+  fill_in @billing_card_number, :with => @billing_new_card_number
+  fill_in @billing_security_code, :with => @billing_new_card_securitycode
+  select(@billing_new_card_month, :from => @billing_expiration_month)
+  select(@billing_new_card_year.to_s, :from => @billing_expiration_year)
 end
 
 When /^I enter billing address$/ do
@@ -371,19 +377,21 @@ When /^I enter billing address$/ do
   @billing_new_exchange_code = @config_data_file['billing_new_exchange_code']
   @billing_new_subscriber_code = @config_data_file['billing_new_subscriber_code']
   @billing_new_contact_emailaddress = @config_data_file['billing_new_contact_emailaddress']
-    fill_in @billing_first_name, :with => @billing_new_firstname
-    fill_in @billing_last_name, :with => @billing_new_lastname
-    fill_in @billing_address_1, :with => @billing_new_address1
-    fill_in @billing_city, :with => @billing_new_city
-    select(@billing_new_state, :from => @billing_state)
-    fill_in @billing_zipcode, :with => @billing_new_zip_code
-    wait_until_entity_exists("text", 'enter', 30, "")      
-    @billing_contact_emailaddress = @config_data_file['billing_contact_emailaddress']
-    fill_in @billing_contact_emailaddress, :with => @billing_new_contact_emailaddress
-    @billing_area_code= @config_data_file['billing_area_code']
-    fill_in @billing_area_code, :with => @billing_new_area_code
-    @billing_exchange_nbr = @config_data_file['billing_exchange_nbr']
-    fill_in @billing_exchange_nbr, :with => @billing_new_exchange_code
-    @billing_subscriber_nbr = @config_data_file['billing_subscriber_nbr']
-    fill_in @billing_subscriber_nbr, :with => @billing_new_subscriber_code
+  
+  fill_in @billing_first_name, :with => @billing_new_firstname
+  fill_in @billing_last_name, :with => @billing_new_lastname
+  fill_in @billing_address_1, :with => @billing_new_address1
+  fill_in @billing_city, :with => @billing_new_city
+  select(@billing_new_state, :from => @billing_state)
+  fill_in @billing_zipcode, :with => @billing_new_zip_code
+  
+  wait_until_entity_exists("text", 'enter', 30, "")      
+  @billing_contact_emailaddress = @config_data_file['billing_contact_emailaddress']
+  fill_in @billing_contact_emailaddress, :with => @billing_new_contact_emailaddress
+  @billing_area_code= @config_data_file['billing_area_code']
+  fill_in @billing_area_code, :with => @billing_new_area_code
+  @billing_exchange_nbr = @config_data_file['billing_exchange_nbr']
+  fill_in @billing_exchange_nbr, :with => @billing_new_exchange_code
+  @billing_subscriber_nbr = @config_data_file['billing_subscriber_nbr']
+  fill_in @billing_subscriber_nbr, :with => @billing_new_subscriber_code
 end

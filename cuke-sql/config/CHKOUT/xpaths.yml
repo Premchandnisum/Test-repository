@@ -1,0 +1,254 @@
+#Script Name        :  newcheckoutconfig
+#Description        :  This file have all the web elements/objects and page titles and URL's etc of new checkout project pages.   
+#Author             :  NISUM Technologies              
+#Reviewer           :  Ravi Gummala        
+#Creation Date      :        
+#Pre-conditions     :  Base environment, access to the Software Request System.
+#Post-conditions:   :  Regression of the Software Request System based on functionality.
+#Data Files         :  None at this level.
+#******************************************************************************************************
+# Revision History
+#******************************************************************************************************
+#Date               :                
+#Revised By         :        
+#******************************************************************************************************
+#*********************************************************************************************
+
+#********************************#### Shipping Page Web Elements ####*************************#
+shipping_first_name: sfName
+shipping_first_name_val: //input[@id='sfName']
+shipping_last_name: slName
+shipping_last_name_val: //input[@id='slName']
+shipping_address_1: sAddress
+shipping_address_1_val: //input[@id='sAddress']
+shipping_address_2: saddressLine2
+shipping_address_2_val: //input[@id='saddressLine2']
+shipping_city: sCity
+shipping_city_val: //input[@id='sCity']
+shipping_state_select: sState
+shipping_state: //select[@id='sState']
+shipping_zipcode: spostalCode
+shipping_zipcode_val: //input[@id='spostalCode']
+shipping_area_code: shippingAreaCode
+shipping_area_code_val: //input[@id='shippingAreaCode']
+shipping_exchange_nbr: shippingExchNum
+shipping_exchange_nbr_val: //input[@id='shippingExchNum']
+shipping_subscriber_nbr: shippingSubNum
+shipping_subscriber_nbr_val: //input[@id='shippingSubNum']
+shipping_international_shipping_link: //div[@id='anotherCountry']/div[2]/a
+shipping_continue_checkout_btn: //input[@id='submit']
+shipping_shippingMethod: //div[@id="deliveryMethod"]/fieldset[1]/ul[1]/li/span
+shipping_everydayShippingMethod: //div[@id="deliveryMethod"]/fieldset[1]/ul[1]/li/input[@id="shipments0.shippingMethod.methodCode1"]
+shipping_merchandise_total_in_shipping_page: //span[@id='subTotalAmount']
+shipping_flat_tax_in_shipping_page: //li[@id='estimatedTax']
+shipping_disabled_premium_shipping_method: //input[@id='shipments0.shippingMethod.methodCode2'][@disabled='disabled']
+shipping_disabled_express_shipping_method: //input[@id='shipments0.shippingMethod.methodCode3'][@disabled='disabled']
+
+New_Default_Shipping details:
+new_shipping_firstname: QA
+new_shipping_lastname: Macys
+new_shipping_address1: 685 Market Street
+new_shipping_city: San Fransisco
+new_shipping_state: California
+new_shipping_zip_code: 94105
+new_shipping_area_code: 123
+new_shipping_exchange_code: 456
+new_shipping_subscriber_code: 7890
+
+Edit_Default_Shipping details:
+edit_shipping_firstname: Automation
+edit_shipping_lastname: QA
+edit_shipping_address1: 685 Market Street
+edit_shipping_city: San Fransisco
+edit_shipping_state: California
+edit_shipping_zip_code: 94103
+edit_shipping_area_code: 567
+edit_shipping_exchange_code: 234
+edit_shipping_subscriber_code: 2940
+state2: CA
+
+#********************************#### Gift Options Web Elements ####*************************#
+gift_option_no: //input[@id='gift-no']
+gift_option_yes: //input[@id='gift-yes']
+gift_message_checkbox: //input[@id='addGiftMessage']
+gift_message_textfield: //textarea[@id='giftMessage']
+gift_box: //input[@id='giftOption']
+gift_receipt: //input[@id='hidePrice']
+
+#********************************#### Billing Page Web Elements ####*************************#
+billing_credit_card_type: paymentCardType
+billing_card_number: paymentCardNumber
+billing_expiration_month: paymentCardExpMonth
+billing_expiration_year: paymentCardExpYear
+billing_security_code: paymentCardSecCode
+billing_security_code_val: //input[@id='paymentCardSecCode'] 
+billing_sameasshippingaddress: useMyShippingAddress
+billing_first_name: paymentFirstName
+billing_first_name_val: //input[@id='paymentFirstName']
+billing_last_name: paymentLastName
+billing_last_name_val: //input[@id='paymentLastName']
+billing_address_1: paymentAddressLine1
+billing_address_1_val: //input[@id='paymentAddressLine1']
+billing_address_2: paymentAddressLine2
+billing_address_2_val: //input[@id='paymentAddressLine2']
+billing_city: paymentCity
+billing_city_val: //input[@id='paymentCity']
+billing_state: paymentState
+billing_state_val: //select[@id='paymentState']
+billing_zipcode: paymentPostalCode
+billing_zipcode_val: //input[@id='paymentPostalCode']
+billing_contact_emailaddress: contactEmail
+billing_contact_emailaddress_val: //input[@id='contactEmail']
+billing_area_code: paymentAreaCode
+billing_area_code_val: //input[@id='paymentAreaCode']
+billing_exchange_nbr: paymentExchNum
+billing_exchange_nbr_val: //input[@id='paymentExchNum']
+billing_subscriber_nbr: paymentSubNum
+billing_subscriber_nbr_val: //input[@id='paymentSubNum']
+billing_continue_checkout_btn: //input[@id='submit']
+billing_addcard_btn: //button[@id='addGiftCard']
+billing_errormessage: fieldLevel
+billing_create_profile_checkbox: createAccount
+billing_create_profile_emailaddress: email
+billing_create_profile_confirmemailaddress: confirmEmail
+billing_create_profile_password: password
+billing_create_profile_confirmpassword: cpassword
+billing_create_profile_birthday: birthday_date
+billing_create_profile_birthmonth: birthday_month
+billing_create_profile_birthyear: birthday_year
+billing_egc_cardnumber: //input[@id='addGiftCardEcardNumber'] 
+billing_egc_captcha: //input[@id='addGiftCardCaptchaWord']
+billing_egc_captcha_image: //img[@id='captchaImage']
+billing_egc_addcard: //button[@id='overlayAddGiftCard']
+billing_egc_newcaptcha: //img[@id='newImage']
+billing_egc_cancel: //button[@id='cancel']
+billing_egc_overlay_cancel: //img[@id='cancelBtn']
+bread_crumbs: bread-crumbs
+
+Billing_Default_Card details:
+billing_new_card_type: Visa
+billing_new_card_number: 4111111111111111
+billing_new_card_securitycode: 123
+billing_new_card_month: December
+billing_new_card_year: 2014
+edit_billing_email1: test@testing.com
+
+New_Default_Billing details:
+billing_new_firstname: QA
+billing_new_lastname: Macys
+billing_new_address1: 685 Market Street
+billing_new_city: San Fransisco
+billing_new_state: California
+billing_new_zip_code: 94105
+billing_new_area_code: 123
+billing_new_exchange_code: 456
+billing_new_subscriber_code: 7890
+
+New Default Contact details:
+billing_new_contact_emailaddress: QA@testmacys.com
+
+#********************************#### Order Review Page Web Elements ####*******************************#
+order_review_contact_email: //div[@class='sectionPadding']/ul/li[3]/div[1]
+order_review_phone: //div[@class='sectionPadding']/ul/li[3]/div[2]
+order_review_place_order_btn: //button[@id='placeOrder']
+order_review_edit_shipping_details_btn: //a[@id='changeShipping']
+order_review_edit_payment_details_btn: //a[@id='changePayment']
+order_review_edit_shipping_details_info: //*[@class="checkoutContainer shipAddr"]  
+order_review_edit_payment_details_info: //*[@class="OrderReview_billingAddress"]/div
+
+#********************************#### Order Confirmation Page Web Elements ####*************************#
+order_number: //div[@class='orderDetails']/span
+order_total: //div[@class='orderTotal addCardShade']/div/span
+order_confirmation_profile_email: //form[@id='confirmVB']/div/fieldset/div/div/span
+order_confirmation_profile_shipping_address: //form[@id='confirmVB']/div/fieldset/div/div[2]/div
+
+#********************************#### Checkout Page Web Elements, Titles and URLs ####****************#
+checkout_signin_page_title: Sign In - Macy's Checkout
+checkout_shipping_page_title : Shipping - Macy's Checkout
+checkout_payment_page_title : Payment - Macy's Checkout
+checkout_orderreview_page_title: Order Review - Macy's Checkout
+checkout_orderconfirmation_page_title: Order Confirmation - Macy's
+checkout_shipping_page_url: chkout/shipping
+checkout_payment_page_url: chkout/payment
+checkout_order_review_page_url: chkout/review
+checkout_order_confirm_page_url: chkout/confirm
+checkout_payment_errorpage_url: chkout/payment/continuecheckout
+checkout_without_profile_btn: //input[@id='isWithoutProfile']
+
+#********************************#### Header of Checkout Pages Web Elements ####************************#
+header_macys_logo: //div[@id='header']/hl[@id='macys-logo']/a
+header_chat: //a[@id='Live chat']
+header_clicktocall: //a[@id='Click to call']
+
+#********************************#### Footer of Checkout Pages Web Elements ####************************#
+footer_shopwithconfidence_eassyretuns: //a[@id='easyReturnLink']
+footer_shopwithconfidence_secureshopping: //a[@id='secureShoppingLink']
+footer_shopwithconfidence_privacypolicy: //a[@id='privacyPolicyDetails']
+footer_shopwithconfidence_shippingpolicy: //a[@id='ShippingPolicyDetails']
+
+#********************************#### Mini Bag Web Elements, Titles and URLs ####********************#
+mini_bag_promo_code: promoCodeValue
+mini_bag_apply_promo_code: //button[@id='applyPromoCode']
+mini_bag_remove_promo_code: //a[@id='removePromoCode']
+mini_bag_shopping_bag_icon: //div[@id='iconShopbag']
+mini_bag_bag_id_in_checkout_mini_bag: //span[@id='bagID']
+mini_bag_order_total_in_mini_bag_on_shipping_page: //span[@id='totalAmount']
+mini_bag_item_count: //span[@class='itemsCount']/span[@class='bold']
+mini_bag_promotion_description: //label[@id='appliedPromoDesc']
+mini_bag_promotion_price: //span[@id='appliedPromoPriceContainer']
+mini_bag_container: //div[@id='layout-minibag-container']
+mini_bag_order_total: //span[@id='totalAmount']
+mini_bag_sub_total: //span[@id='subTotalAmount']
+mini_bag_shipping_cost: //span[@id='shippingCost']
+mini_bag_you_saved: //span[@id='discountTotal']
+mini_bag_remove_button: //img[@alt='remove']
+shipping_surcharge_amount: //div[@id='bottom-panel']/ul/li[7]/span
+personalized_fee_amount: //div[@id='bottom-panel']/ul/li[8]/span
+sales_tax_amount: //div[@id='bottom-panel']/ul/li[10]
+tax: 0.06 
+
+#********************************#### International Home Page Web Elements ####***********************#
+international_home_page: internationalContext/index.ognc
+
+#********************************#### PDP Web Elements ####*******************************************#
+pdp_add_to_bag_btn: //img[@alt='add to bag']
+pdp_atb_continue_checkout_btn: //img[@id='btnCheckout']
+pdp_update_btn: //img[@id='updateButton']
+pdp_sub_url: /shop/product?ID=
+pdp_colorContainer: //div[@class='colors']
+pdp_color: //div[@id='pdpAttributes']//div[@class='colors']/ul/li
+pdp_size_available: //div[@id='pdpAttributes']/div[2]/div/ul/li[@class='horizontal size']
+pdp_breadcrumbxpath1: //div[@class='#{bread_crumbs}']/a[1]
+pdp_breadcrumbxpath2: //div[@class='#{bread_crumbs}']/a[2]
+
+#********************************#### Shopping Bag Page Web Elements ####*****************************#
+shopping_bag_page_url: /bag/index.ognc
+shopping_bag_page_continue_checkout_btn: //div[@class='bagContainer shoppingButtons']//img[@alt='CONTINUE CHECKOUT']
+shopping_bag_page_empty_error_msg: //div[@class='generalError']/div[@class='errorMsg']
+shopping_bag_bag_id_in_shopping_bag: //div[@id='shoppingBagId']
+shopping_bag_order_total_in_shopping_bag: //div[@id='bagTotal']
+shopping_bag_order_total_currency_in_shopping_bag: //div[@id="bagTotalCurrency"]
+shopping_bag_item_count_in_shopping_bag: //a[@class='globalMiniCartItems']
+shopping_bag_merchandise_total_bag: //div[@id='bagMerchandiseTotal']
+shopping_bag_id: //span[@id='bagID'] 
+shopping_bag_promo_code_input: promocodeInput
+promo_code_value: promoCodeValue
+apply_promo_code: applyPromoCode
+
+
+Common Web Elements:
+back_one_step_btn: //img[@alt='BACK ONE STEP']
+price_sale: priceSale
+checkout_in_popup: m_atb_checkout
+class_bread_crumbs: breadCrumbs
+text_you_are_in: You are in
+bc_element: bcElement
+
+Bread Crumbs:
+bread_crumbs: bread-crumbs
+class_bread_crumbs: breadCrumbs
+text_you_are_in: You are in
+bc_element: bcElement
+
+
+

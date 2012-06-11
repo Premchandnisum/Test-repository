@@ -12,7 +12,6 @@
 #Date               :                
 #Revised By         :        
 #******************************************************************************************************
-
 And /^order total should be displayed in shopping bag$/ do
   @order_total_in_shopping_bag = @config_data_file['shopping_bag_order_total_in_shopping_bag']
   @order_total_currency_in_shopping_bag = @config_data_file['shopping_bag_order_total_currency_in_shopping_bag']
@@ -26,9 +25,7 @@ And /^order total in mini bag should be same as in shopping bag$/ do
   @order_total_in_mini_bag_on_shipping_page = @config_data_file['mini_bag_order_total_in_mini_bag_on_shipping_page']
   @orderTotalInShippingPage = page.find(:xpath, "#{@order_total_in_mini_bag_on_shipping_page}").text
   puts "orderTotal in checkout shipping page is:" + @orderTotalInShippingPage
-  case @orderTotalInShippingPage
-  when @orderTotalInShippingPage   
-   @orderTotalInBag==@orderTotalInShippingPage
+  if (@orderTotalInBag==@orderTotalInShippingPage)
    puts "Order total in shopping bag page and checkout shipping page is same"
   else
    puts "Order total in shopping bag page and checkout shipping page is NOT same"
@@ -45,22 +42,17 @@ And /^I should see flat tax displayed in order summary$/ do
   expectedFlatTaxInShippingPage = merchandiseTotalInShippingPage * + "#{@tax}"
   puts "Expected flat tax in shipping page:" + expectedFlatTaxInShippingPage
   wait_until_entity_exists("path","#{@flat_tax_in_shipping_page}" , 30, "")  
-  actualFlatTaxInShippingPage=page.find(:xpath, "#{@flat_tax_in_shipping_page}").text
-  case expectedFlatTaxInShippingPage 
-  when expectedFlatTaxInShippingPage
-   actualFlatTaxInShippingPage.should==expectedFlatTaxInShippingPage
+  actualFlatTaxInShippingPage = page.find(:xpath, @flat_tax_in_shipping_page).text
+  if (actualFlatTaxInShippingPage == expectedFlatTaxInShippingPage)
    puts "Flat tax is calculated as expected in checkout shipping page:" + actualFlatTaxInShippingPage
   else
-   actualFlatTaxInShippingPage.should_not==expectedFlatTaxInShippingPage
    puts "Flat tax is NOT calculated in checkout shipping page:" + actualFlatTaxInShippingPage
   end
 end
 
 And /^I should see error message "([^"]*)"$/ do |errormessage|
-   case errormessage
-   when errormessage
-     page.has_content? errormessage
-     puts "Error message is displayed as expected"
+   if(page.has_content? errormessage)
+    puts "Error message is displayed as expected"
    else
     puts "Error message is not displayed as expected"
    end  
@@ -78,12 +70,9 @@ And /^bag id in mini bag should be same as in shopping bag$/ do
   wait_until_entity_exists("path","#{@bag_id_in_checkout_mini_bag}" , 30, "")  
   @bagIdInCheckout = page.find(:xpath, @bag_id_in_checkout_mini_bag).text
   puts "Bag ID in checkout page is:" + @bagIdInCheckout
-  case @bagIdInBag
-  when @bagIdInBag
-   @bagIdInCheckout.should==@bagIdInBag
+  if (@bagIdInBag == @bagIdInCheckout)
    puts "Bag Id in shopping bag page and checkout page is same"
   else
-   @bagIdInCheckout.should_not==@bagIdInBag 
    puts "Bag Id in shopping bag page and checkout page is NOT same"
   end
 end
@@ -98,12 +87,9 @@ Then /^I should see the updated bag id on shipping page$/ do
   @bag_id_in_checkout_mini_bag = @config_data_file['mini_bag_bag_id_in_checkout_mini_bag']
   wait_until_entity_exists("path","#{@bag_id_in_checkout_mini_bag}" , 30, "")
   @bagIdInCheckoutAfterPlacingAnOrder = page.find(:xpath, @bag_id_in_checkout_mini_bag).text
-  case @bagIdInCheckoutAfterPlacingAnOrder
-  when @bagIdInCheckoutAfterPlacingAnOrder
-    @bagIdInCheckoutbeforePlacingAnOrder.should == @bagIdInCheckoutAfterPlacingAnOrder
+  if (@bagIdInCheckoutbeforePlacingAnOrder == @bagIdInCheckoutAfterPlacingAnOrder)
     puts "Bag ID before and after placing order is same : " + @bagIdInCheckoutbeforePlacingAnOrder
   else
-    @bagIdInCheckoutbeforePlacingAnOrder.should_not == @bagIdInCheckoutAfterPlacingAnOrder
     puts "Bag ID before placing an order is : " + @bagIdInCheckoutbeforePlacingAnOrder +  "  Bag ID after placing an order is : " + @bagIdInCheckoutAfterPlacingAnOrder
   end
 end
@@ -133,21 +119,19 @@ And /^my items are in the mini bag$/ do
   pending # express the regexp above with the code you wish you had
 end
 
-And /^bag count should be displayed in the shopping bag$/ do  
-  @mini_bag_sales_tax_amount = @config_data_file['mini_bag_sales_tax_amount']
-  wait_until_entity_exists("path","#{@mini_bag_sales_tax_amount}" , 30, "")
-  @itemCountInShoppingBag = page.find(:xpath, @mini_bag_sales_tax_amount).text
+And /^bag count should be displayed in the shopping bag$/ do
+  @shopping_bag_item_count_in_shopping_bag = @config_data_file['shopping_bag_item_count_in_shopping_bag']
+  wait_until_entity_exists("path","#{@shopping_bag_item_count_in_shopping_bag}" , 30, "")
+  @itemCountInShoppingBag = page.find(:xpath, @shopping_bag_item_count_in_shopping_bag).text
   puts "Item count in shopping bag is:" + @itemCountInShoppingBag
 end
 
 And /^bag count in mini bag should be same as in the shopping bag$/ do
-  wait_until_entity_exists("path","#{@itemCountInMiniBag}" , 30, "")
-  case @itemCountInShoppingBag
-  when @itemCountInShoppingBag
-    @itemCountInShoppingBag.should==@itemCountInMiniBag
+  @mini_bag_item_count = @config_data_file['mini_bag_item_count']
+  wait_until_entity_exists("path","#{@mini_bag_item_count}" , 30, "")
+  if (@itemCountInShoppingBag==@itemCountInMiniBag)
     puts "Item count in shopping bag page and mini bag is same:" + @itemCountInMiniBag
    else
-    @itemCountInShoppingBag.should_not==@itemCountInMiniBag
     puts "Item count in shopping bag page and mini bag is NOT same:" + @itemCountInMiniBag
    end
 end
@@ -177,9 +161,7 @@ end
 And /^the page should be secure$/ do
   browser = Capybara.current_session
   curr_url = browser.current_url
-  case curr_url
-  when curr_url
-    curr_url.index("https") != nil
+  if (curr_url.index("https") != nil)
     puts "It is secured page"
   else
     puts "It is not secured page"
@@ -200,14 +182,11 @@ Then /^I am on international home page$/ do
    browser = Capybara.current_session
    curr_url = browser.current_url
    @international_home_page = @config_data_file['international_home_page']
-   case @international_home_page
-   when @international_home_page
-    curr_url.index(@international_home_page)
+   if (curr_url.index(@international_home_page))
     puts "International home page is displayed"
    else
     puts "International home page is NOT displayed"
    end
-  
 end
 
 Then /^I navigate to GVR page$/ do
@@ -525,10 +504,9 @@ Then /^I verify merchandise total$/ do
 end
 
 Then /^I verify merchandise total on "([^"]*)" page$/ do |pagename|
-@shopping_bag_merchandise_total_bag = @config_data_file['shopping_bag_merchandise_total_bag']
-  case "shopping bag"
-  when "shopping bag" 
-      order_subtotal = page.find(:xpath, "#{@shopping_bag_merchandise_total_bag}").text
+  @shopping_bag_merchandise_total_bag = @config_data_file['shopping_bag_merchandise_total_bag']
+  if pagename == "shopping bag"
+     order_subtotal = page.find(:xpath, "#{@shopping_bag_merchandise_total_bag}").text
   end
 end
 
@@ -556,3 +534,18 @@ end
 Then /^I validate pagetitle on "([^"]*)" page for "([^"]*)"$/ do |pagename, feature|
   page.find(:xpath, "//title").text.include?(pagename).should == true     
 end
+
+def loadchkconfig()
+  @checkoutfileLoad=false
+  config_data_file = "config/CHKOUT/xpaths.yml"
+  @config_data_file=YAML::load(File.open(config_data_file))
+  @checkoutfileLoad=true  
+end
+
+def callchkconfig()
+#  Load Configuration File
+  if !(@checkoutfileLoad)
+    puts "File Instance Not Exists"
+    loadchkconfig
+end
+  end

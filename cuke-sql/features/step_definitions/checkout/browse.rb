@@ -13,30 +13,17 @@
 #Revised By         :
 #******************************************************************************************************
 Then /^I navigate to product detail page with product id "([^"]*)"$/ do |prodid|
+# Load Configuration File
+  callchkconfig()
   @pdp_sub_url= @config_data_file['pdp_sub_url']
-  visit("#{@url}"+"#{@pdp_sub_url}"+"#{prodid}")
-end
-
-Then /^I navigate to VGC "(.*?)","(.*?)","(.*?)"$/ do |prodid,enterAmount,recipientsEmail|
-  @pdp_sub_url= @config_data_file['pdp_sub_url']
-  visit("#{@url}"+"#{@pdp_sub_url}"+"#{prodid}")
-  @amount = @config_data_file['amount']
-  @email = @config_data_file['email']
-  fill_in @amount, :with => "#{enterAmount}"
-  fill_in @email, :with => "#{recipientsEmail}"
-end
-
-Then /^I navigate to product detail page with common product id "([^"]*)"$/ do |prodid,table|
-  @pdp_sub_url= @config_data_file['pdp_sub_url']
-  table.hashes.each do |attributes|
-    prodid = attributes["prodid"]
-  end
   visit("#{@url}"+"#{@pdp_sub_url}"+"#{prodid}")
 end
 
 When /^I add items on bag$/ do
+  selectcolor()
+  selectsize()
   @pdp_add_to_bag_btn = @config_data_file['pdp_add_to_bag_btn']
-  wait_until_entity_exists("path",@pdp_add_to_bag_btn , 60, "")
+  wait_until_entity_exists("path",@pdp_add_to_bag_btn , 70, "")
   page.find(:xpath, @pdp_add_to_bag_btn).click
   @pdp_atb_continue_checkout_btn = @config_data_file['pdp_atb_continue_checkout_btn']
   wait_until_entity_exists("path",@pdp_atb_continue_checkout_btn , 70, "")
@@ -68,6 +55,14 @@ Then /^I navigate to product (?:detail|details|PDP) page$/ do
 end
 
 Then /^I should see shopping bag is empty with error message "([^"]*)"$/ do |expectedErrorMessage|
+  if(page.has_content? expectedErrorMessage)
+    puts "Empty shopping bag is displayed after placing the order"
+  else
+    puts "Empty shopping bag is NOT displayed after placing the order"
+  end
+end
+
+Then /^I should see shopping bag is empty with error message "([^"]*)"$/ do |expectedErrorMessage|
   @shopping_bag_page_empty_error_msg = @config_data_file['shopping_bag_page_empty_error_msg']
   actualErrorMessage = page.find(:xpath, @shopping_bag_page_empty_error_msg).text()
   puts actualErrorMessage
@@ -76,6 +71,27 @@ Then /^I should see shopping bag is empty with error message "([^"]*)"$/ do |exp
   else
     puts "Empty shopping bag is NOT displayed after placing the order"
   end
+end
+
+Then /^I navigate to VGC "(.*?)","(.*?)","(.*?)"$/ do |prodid,enterAmount,recipientsEmail|
+# Load Configuration File
+  callchkconfig()
+  @pdp_sub_url= @config_data_file['pdp_sub_url']
+  visit("#{@url}"+"#{@pdp_sub_url}"+"#{prodid}")
+  @amount = @config_data_file['amount']
+  @email = @config_data_file['email']
+  fill_in @amount, :with => "#{enterAmount}"
+  fill_in @email, :with => "#{recipientsEmail}"
+end
+
+Then /^I navigate to product detail page with common product id "([^"]*)"$/ do |prodid,table|
+#  Load Configuration File
+  callchkconfig()
+  @pdp_sub_url= @config_data_file['pdp_sub_url']
+  table.hashes.each do |attributes|
+    prodid = attributes["prodid"]
+  end
+  visit("#{@url}"+"#{@pdp_sub_url}"+"#{prodid}")
 end
 
 Then /^I should see the attributes selected by the user are populated on PDP page$/ do

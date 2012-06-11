@@ -12,7 +12,6 @@
 #Date               :
 #Revised By         :
 #******************************************************************************************************
-
 Then /^I am on checkout signin page$/ do
   @checkoutsignin_page_title = @config_data_file['checkout_signin_page_title']
   page_navigated = page.has_content? @checkoutsignin_page_title
@@ -28,11 +27,11 @@ When /^I continue as a guest user$/ do
   wait_until_entity_exists("path","#{@checkout_without_profile_btn}" , 30, "")
   #page.find(:xpath, "#{@checkout_without_profile_btn}").click
   visit("#{@url}"+"/chkout/startcheckout")
-  visit("#{@url}"+"/chkout/startcheckout")
 end
 
 Then /^I should see the Shipping page$/ do
-# wait_until_entity_exists("path",@shipping_continue_checkout_btn , 30, "")
+  @shipping_continue_checkout_btn = @config_data_file['shipping_continue_checkout_btn']
+  wait_until_entity_exists("path",@shipping_continue_checkout_btn , 30, "")
   @expectedshipping_page_title = @config_data_file['checkout_shipping_page_title']
   page_navigated = page.has_content? @expectedshipping_page_title
   if (page_navigated)
@@ -286,34 +285,32 @@ And /^I enter invalid shipping details firstname "([^"]*)", lastname "([^"]*)",a
 end
 
 And /^earlier entered details should be prepopulated in the fields$/ do
-
   puts "Previous Entered Shipping Details: " + @firstname + ", " + @lastname + ", " + @addressline1 + ", " + @addressline2 + ", " + @city + ", " + @state + ", " + @zipcode + ", " + @phonenumberareacode + ", " + @phonenumberexchangeNbr + ", " + @phonenumbersubscriberNbr
-  @shipping_first_name = @config_data_file['shipping_first_name']
-  @shipping_last_name = @config_data_file['shipping_last_name']
-  @shipping_address_1 = @config_data_file['shipping_address_1']
-  @shipping_address_2 = @config_data_file['shipping_address_2']
-  @shipping_city = @config_data_file['shipping_city']
-  @shipping_state = @config_data_file['shipping_state']
-  @shipping_state_select = @config_data_file['shipping_state_select']
-  @shipping_zipcode = @config_data_file['shipping_zipcode']
-  @shipping_area_code = @config_data_file['shipping_area_code']
-  @shipping_exchange_nbr = @config_data_file['shipping_exchange_nbr']
-  @shipping_subscriber_nbr = @config_data_file['shipping_subscriber_nbr']
-  @actualfirstname = page.find(:xpath, "#{@shipping_first_name}']").value
-  @actuallastname = page.find(:xpath, "#{@shipping_last_name}").value
-  @actualaddressline1 = page.find(:xpath, "#{@shipping_address_1}]").value
-  @actualaddressline2 = page.find(:xpath, "#{@shipping_address_2}']").value
-  @actualcity = page.find(:xpath, "#{@shipping_city}").value
-  @actualstate = page.find(:xpath, "#{@shipping_state}").value
-  @actualzipcode = page.find(:xpath, "#{@shipping_zipcode}").value
-  @actualareacode = page.find(:xpath, "#{@shipping_area_code}").value
-  @actualexchangenbr = page.find(:xpath, "#{@shipping_exchange_nbr}").value
-  @actualsubscribernbr = page.find(:xpath, "#{@shipping_subscriber_nbr}").value
-  @expectedstate = page.has_select?(shipping_state, :selected => @state)
+  @shipping_first_name_val = @config_data_file['shipping_first_name_val']
+  @shipping_last_name_val = @config_data_file['shipping_last_name_val']
+  @shipping_address_1_val = @config_data_file['shipping_address_1_val']
+  @shipping_address_2_val = @config_data_file['shipping_address_2_val']
+  @shipping_city_val = @config_data_file['shipping_city_val']
+  @shipping_state_val = @config_data_file['shipping_state']
+  @shipping_state_select_val = @config_data_file['shipping_state_select_val']
+  @shipping_zipcode_val = @config_data_file['shipping_zipcode_val']
+  @shipping_area_code_val = @config_data_file['shipping_area_code_val']
+  @shipping_exchange_nbr_val = @config_data_file['shipping_exchange_nbr_val']
+  @shipping_subscriber_nbr_val = @config_data_file['shipping_subscriber_nbr_val']
+  @actualfirstname = page.find(:xpath, "#{@shipping_first_name_val}").value
+  @actuallastname = page.find(:xpath, "#{@shipping_last_name_val}").value
+  @actualaddressline1 = page.find(:xpath, "#{@shipping_address_1_val}").value
+  @actualaddressline2 = page.find(:xpath, "#{@shipping_address_2_val}").value
+  @actualcity = page.find(:xpath, "#{@shipping_city_val}").value
+  @actualstate = page.find(:xpath, "#{@shipping_state_val}").value
+  @actualzipcode = page.find(:xpath, "#{@shipping_zipcode_val}").value
+  @actualareacode = page.find(:xpath, "#{@shipping_area_code_val}").value
+  @actualexchangenbr = page.find(:xpath, "#{@shipping_exchange_nbr_val}").value
+  @actualsubscribernbr = page.find(:xpath, "#{@shipping_subscriber_nbr_val}").value
+  @expectedstate = page.has_select?(@shipping_state_val, :selected => @state)
 
   puts "Actual Shipping Details" + @actualfirstname + ", " + @actuallastname + ", " + @actualaddressline1 + ", " + @actualaddressline2 + ", " + @actualcity + ", " + @actualstate + ", " + @actualzipcode + ", " + @actualareacode + ", " + @actualexchangenbr + ", " + @actualsubscribernbr
-
-  if ((@firstname == @actualfirstname) & (@lastname == @actuallastname) & (@addressline1 == @actualaddressline1) & (@addressline2 == @actualaddressline2) & (@city == @actualcity) & (@expectedstate) & (@zipcode == @actualzipcode) & (@phonenumberareacode == @actualareacode) & (@phonenumberexchangeNbr == @actualexchangenbr) & (@phonenumbersubscriberNbr == @actualsubscribernbr))
+  if ((@firstname == @actualfirstname) && (@lastname == @actuallastname) && (@addressline1 == @actualaddressline1) && (@addressline2 == @actualaddressline2) && (@city == @actualcity) && (@expectedstate) && (@zipcode == @actualzipcode) && (@phonenumberareacode == @actualareacode) && (@phonenumberexchangeNbr == @actualexchangenbr) && (@phonenumbersubscriberNbr == @actualsubscribernbr))
     puts "Previously entered details are populated correctly"
   else
     puts "Previously entered details are not populated correctly"
@@ -398,7 +395,18 @@ When /^I enter shipping details$/ do
   @new_shipping_area_code = @config_data_file['new_shipping_area_code']
   @new_shipping_exchange_code = @config_data_file['new_shipping_exchange_code']
   @new_shipping_subscriber_code = @config_data_file['new_shipping_subscriber_code']
-
+  @shipping_first_name = @config_data_file['shipping_first_name']
+  @shipping_last_name = @config_data_file['shipping_last_name']
+  @shipping_address_1 = @config_data_file['shipping_address_1']
+  @shipping_address_2 = @config_data_file['shipping_address_2']
+  @shipping_city = @config_data_file['shipping_city']
+  @shipping_state = @config_data_file['shipping_state']
+  @shipping_state_select = @config_data_file['shipping_state_select']
+  @shipping_zipcode = @config_data_file['shipping_zipcode']
+  @shipping_area_code = @config_data_file['shipping_area_code']
+  @shipping_exchange_nbr = @config_data_file['shipping_exchange_nbr']
+  @shipping_subscriber_nbr = @config_data_file['shipping_subscriber_nbr']
+  
   fill_in @shipping_first_name, :with => @new_shipping_firstname
   fill_in @shipping_last_name, :with => @new_shipping_lastname
   fill_in @shipping_address_1, :with => @new_shipping_address1

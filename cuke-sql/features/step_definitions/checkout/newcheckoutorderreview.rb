@@ -12,13 +12,11 @@
 #Date               :
 #Revised By         :
 #******************************************************************************************************
-
 Then /^I should see the order review page$/ do
   @expectedOrderReviewPageTitle=@config_data_file['checkout_orderreview_page_title']
-   page_navigated = page.has_content? @expectedOrderReviewPageTitle
+  page_navigated = page.has_content? @expectedOrderReviewPageTitle
   if (page_navigated)
     puts "Expected Page is displayed i.e. : " + @expectedOrderReviewPageTitle
-    puts "\n"
   else
     notExpectedTitle=@browser.title
     puts "Expected Page is not displayed : " + notExpectedTitle
@@ -30,7 +28,6 @@ And /^I should see contact email address$/ do
   puts "Contact email address entered on payment page: " + @contactemailaddress
   wait_until_entity_exists("path", "#{@order_review_contact_email}" , 30, "")
   @order_review_contactemail = page.find(:xpath, "#{@order_review_contact_email}").text
-  puts "\n"
   puts "Contact email address on order review page: " + @order_review_contactemail
   if (@order_review_contactemail == @contactemailaddress)
     puts "Contact email address is displaying as expected on order review page"
@@ -45,7 +42,6 @@ Then /^I should see contact phone number$/ do
   puts "Contact phone number entered on payment page: " + @contactphonenumber
   wait_until_entity_exists("path","#{@order_review_phone}" , 30, "")
   @order_review_phone = page.find(:xpath, "#{@order_review_phone}").text
-  puts "\n"
   puts "Contact phone on Order review page: " + @order_review_phone
   if (@contactphonenumber == @order_review_phone)
     puts "Contact phone number is displaying as expected on order review page"
@@ -150,5 +146,4 @@ And /^I validate the fields_and_buttons on ordereview page$/ do |pagename|
 #page.find(:xpath, "#{@order_review_edit_shipping_details_btn}") != nil
 #page.find(:xpath, "#{@order_review_edit_payment_details_btn}") != nil
 #page.find(:xpath, "//a/span").text.should == 'back one step'
-
 end
