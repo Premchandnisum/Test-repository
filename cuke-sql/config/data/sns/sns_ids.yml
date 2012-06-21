@@ -1,0 +1,37 @@
+sns_main_page:
+keyword: Keyword
+webId: Keyword
+upc: upc
+submit: submit
+value_search: Search
+value_view_item_details: 'View Item Details'
+
+sizes_and_results_page:
+page_id: doc3
+
+results_page:
+selected_result: memberProdDetails highlight
+
+pdp:
+product_data: productData
+product_detail_img: productDetailImg
+large_image_section: largeImageSection
+instructional_text: arrowKeyGuideLine
+nav_instructional_text: navigationInstruction
+product_images_container: productImagesContainer
+proddetails_color_swatches: prodDetailsColorSwatches
+long_desc: longDesc
+bullet_points_Product_description: bulletPointsDesc
+
+narrow_by_size_page:
+default_highlight: filterValue highLightItem
+
+size_color_page:
+price_value: priceValue
+color_type_section: colorTypeSection
+color_text: colorText
+type_text: typeText
+
+collection_list_page:
+master_collection_item: masterCollectionItem
+master_collection_color: masterCollectionColor

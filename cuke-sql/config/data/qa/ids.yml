@@ -1,0 +1,116 @@
+Recommend page:
+bedding_collection: weRecommendThumbnails
+
+PD Page:
+product_details: Product Details
+choose_your_items: #bottomArea
+#choose_your_items: viewCollectionItemsButton
+product_list: memberProductList
+product_price_section: productPriceSection
+product_price: productPrice
+price_sale: priceSale
+checkout_in_popup: m_atb_checkout
+
+class_bread_crumbs: breadCrumbs
+text_you_are_in: You are in
+bc_element: bcElement
+
+Shopping bag page:
+merch_total_bag: bagMerchandiseTotal
+continue_checkout: continueCheckout
+
+Profile page:
+without_profile: isWithoutProfile
+
+Many pages:
+merch_total: merchTotal
+sub_total_amount: subTotalAmount
+class_continue_checkout_button: buttonSubmitBorders
+
+Shipping details:
+shipping_first_name: firstname
+shipping_last_name: lastname
+shipping_address_1: address1
+shipping_city: city
+shipping_state: state
+shipping_zipcode: zipcode
+shipping_area_code: areacode
+shipping_exchange_nbr: exchangeNbr
+shipping_subscriber_nbr: subscriberNbr
+submit: submit
+
+bread_crumbs: bread-crumbs
+
+Billing details:
+billing_first_name: firstName
+billing_last_name: lastName
+billing_address_1: addressLine1
+billing_city: city
+billing_state: state
+billing_zipcode: zipCode
+billing_area_code: phoneAreaCode
+billing_exchange_nbr: phoneExchangeNBR
+billing_subscriber_nbr: phoneSubscriberNBR
+billing_credit_card_type: creditCardType
+billing_card_number: cardNumber
+billing_security_code: abc
+billing_expiration: expiration
+
+
+User1 address details:
+firstname1: Mc
+lastname1: Gordon
+address1: 123 Green lane
+city1: San Rafael
+state1: California
+zip_code1: 94903
+area_code1: 123
+exchange_code1: 456
+subscriber_code1: 7890
+test_email1: test@testing.999.com
+state2: CA
+
+Payment card details:
+cctype_p: creditCardType
+ccnumber_p: cardNumber
+ccmonth_p: expiration
+ccyear_p: newCreditCard.creditCardExpiryYear
+cccode_p: abc
+cctype_q1: paymentCardType
+ccnumber_q1: paymentCardNumber
+ccmonth_q1: paymentCardExpMonth
+ccyear_q1: paymentCardExpYear
+cccode_q1: paymentCardSecCode
+
+gentype: Visa
+gennum: 4111111111111111
+gencode: 123
+genmonth: December
+genyear: 2020
+
+use_my_shipping_address: useMyShippingAddress
+contact_email1: contactEmail
+verify_email1: verifyEmail
+pay_area_code: paymentAreaCode
+pay_exchange_code: paymentExchNum
+pay_subscriber_code: paymentSubNum
+
+Bread Crumbs:
+class_bread_crumbs: breadCrumbs
+text_you_are_in: You are in
+bc_element: bcElement
+
+mini bag:
+minibag_container: layout-minibag-container
+bag_id: bagID
+
+promo codes:
+promo_code_input: promocodeInput
+promo_code_value: promoCodeValue
+apply_promo_code: applyPromoCode
+
+review page:
+change_shipping: changeShipping
+change_payment: changePayment
+place_order: placeOrder
+
