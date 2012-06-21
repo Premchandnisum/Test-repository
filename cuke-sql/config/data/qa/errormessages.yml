@@ -22,3 +22,6 @@ shippingCityValidationMessage: City is a required field and may only contain let
 shippingStateValidationMessage: You did not select a State from the menu. Please select a State to complete this form.
 shippingZipcodeValidationMessage: Your Zip Code must be 5 digits. Please try again.
 shippingPhoneNumberValidationMessage: Your Phone Number must be entered in this format: 800-555-1212 and may not all be the same number. Do not use (parentheses) for the area code. Please try again.
+
+#Payment page error messages 
+billingCardTypeVSCardNumberValidationErrorMsg: Invalid Credit Card.

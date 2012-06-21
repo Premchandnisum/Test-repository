@@ -1,10 +1,15 @@
+$LOAD_PATH << './features/support'
+
 require 'selenium-webdriver'
 require 'capybara'
 require 'capybara/dsl'
 require 'capybara/cucumber'
+require 'capybara-screenshot'
 require 'yaml'
-require 'capybara/rspec'
-require 'rspec'
+require 'logger'
+require 'log.rb'
+require 'send_keys.rb'
+
 
 Capybara.run_server = false
 Capybara.default_driver = :selenium
