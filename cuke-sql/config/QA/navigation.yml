@@ -2,6 +2,9 @@ url: http://www1.mcomtest030.fds.com
 url1: http://www.preprod8bloomingdales.fds.com
 url2: http://www.qa1creativemacys.fds.com
 url3: http://www.bloomingdales.com
+
+url4: http://www.preprod5macys.fds.com
+
 navigation:
   forthehome: home
   bed&bath: bath
